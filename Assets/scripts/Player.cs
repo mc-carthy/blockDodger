@@ -4,7 +4,7 @@
 public class Player : MonoBehaviour {
 
     private Rigidbody2D rb;
-    private float moveSpeed = 15f;
+    private float moveSpeed = 25f;
     private float screenWidth = 5f;
     private float h;
 
