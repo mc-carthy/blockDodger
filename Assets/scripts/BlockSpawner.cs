@@ -8,7 +8,7 @@ public class BlockSpawner : MonoBehaviour {
     [SerializeField]
     private GameObject blockPrefab;
 
-    private float timeBetweenWaves = 5f;
+    private float timeBetweenWaves = 3f;
 
     private void Start ()
     {
@@ -24,7 +24,6 @@ public class BlockSpawner : MonoBehaviour {
             if (i != randomIndex)
             {
                 GameObject newBlock = Instantiate (blockPrefab, spawnPoints [i].transform.position, Quaternion.identity) as GameObject;
-                Destroy (newBlock, 10f);
             }
         }
     }

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     private float moveSpeed = 25f;
     private float screenWidth = 5f;
     private float h;
+    private bool isControllable = true;
 
     private void Awake ()
     {
@@ -16,7 +17,10 @@ public class Player : MonoBehaviour {
 
     private void Update ()
     {
-        h = Input.GetAxis ("Horizontal");
+        if (isControllable)
+        {
+            h = Input.GetAxis ("Horizontal");
+        }
     }
 
 	private void FixedUpdate ()
@@ -26,6 +30,13 @@ public class Player : MonoBehaviour {
         newPosition.x = Mathf.Clamp (newPosition.x, -screenWidth, screenWidth);
 
         rb.MovePosition (newPosition);
+    }
+
+    private void OnCollisionEnter2D (Collision2D other)
+    {
+        isControllable = false;
+        rb.isKinematic = false;
+        GameManager.Instance.EndGame ();
     }
 
 }
